@@ -14,6 +14,8 @@ from pathlib import Path
 from datetime import timedelta
 import os
 from dotenv import load_dotenv
+from corsheaders.defaults import default_headers
+
 
 load_dotenv()
 
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'events',
     'users',
     'registrations',
+    "corsheaders",
 ]
 
 REST_FRAMEWORK = {
@@ -70,6 +73,7 @@ SIMPLE_JWT = {
 AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -77,6 +81,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# use this for production
+# CORS_ALLOWED_ORIGINS = [
+#     # insert origin url that are allowed to access the api
+#     "http://localhost:5173",
+#     "http://localhost:3000",
+# ]
+
+# use this on development
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "authorization",
 ]
 
 ROOT_URLCONF = 'core.urls'

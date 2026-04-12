@@ -110,13 +110,53 @@ Event → Track → Session
 ### 1. Clone Repository
 
 ```bash
-git clone <your-repo-url>
+git clone git@github.com:bayuSarifudin/event-management-api.git
 cd event-management-api
 ```
 
 ---
 
-### 2. Create Environment File
+### 2. Setup python environment
+
+**USE PYENV**
+
+```
+pyenv install 3.10.20
+pyenv local 3.10.20
+```
+
+**CReate Virtual env**
+
+```
+python -m venv venv
+```
+
+**Activate**
+
+```
+source venv/bin/activate
+```
+
+**Validate**
+
+```
+which python
+which pip
+```
+
+**Installing new additional dependencies**
+
+```
+python -m pip install -new library-
+```
+
+**freeze to requirement.txt**
+
+```
+pip freeze > requirements.txt
+```
+
+### 3. Create Environment File
 
 Create `.env` file:
 
@@ -132,7 +172,7 @@ DEBUG=True
 
 ---
 
-### 3. Run with Docker
+### 4. Run with Docker
 
 ```bash
 docker compose up --build
@@ -140,7 +180,7 @@ docker compose up --build
 
 ---
 
-### 4. Access API
+### 5. Access API
 
 ```
 http://localhost:8000
