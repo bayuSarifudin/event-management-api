@@ -37,7 +37,15 @@ class SessionSerializer(serializers.ModelSerializer):
 
         return data
 
+class TrackSerializer(serializers.ModelSerializer):
+    sessions = SessionSerializer(many=True, read_only=True)
+    class Meta:
+        model = Track
+        fields = '__all__'
+        
 class EventSerializer(serializers.ModelSerializer):
+    tracks = TrackSerializer(many=True, read_only=True)
+    available_seats = serializers.IntegerField(read_only=True)
     class Meta:
         model = Event
         fields = '__all__'
@@ -47,8 +55,3 @@ class EventSerializer(serializers.ModelSerializer):
         if data['start_date'] >= data['end_date']:
             raise serializers.ValidationError("Event end date must be after start date.")
         return data
-
-class TrackSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Track
-        fields = '__all__'

@@ -6,10 +6,10 @@ A role-based event management API built with Django REST Framework. This system 
 
 ## 🚀 Tech Stack
 
-* **Backend**: Django, Django REST Framework
-* **Database**: PostgreSQL
-* **Authentication**: JWT (JSON Web Token)
-* **Containerization**: Docker & Docker Compose
+- **Backend**: Django, Django REST Framework
+- **Database**: PostgreSQL
+- **Authentication**: JWT (JSON Web Token)
+- **Containerization**: Docker & Docker Compose
 
 ---
 
@@ -17,48 +17,47 @@ A role-based event management API built with Django REST Framework. This system 
 
 ### 🔹 Authentication & Authorization
 
-* JWT-based authentication
-* Role-based access control:
-
-  * **Superadmin**: full system control, manage roles
-  * **Admin**: manage events, tracks, sessions
-  * **User**: register to events
+- JWT-based authentication
+- Role-based access control:
+  - **Superadmin**: full system control, manage roles
+  - **Admin**: manage events, tracks, sessions
+  - **User**: register to events
 
 ---
 
 ### 🔹 Event Management
 
-* Create, update, delete events (admin & superadmin)
-* Event ownership (`created_by`)
-* Filter & pagination support
+- Create, update, delete events (admin & superadmin)
+- Event ownership (`created_by`)
+- Filter & pagination support
 
 ---
 
 ### 🔹 Track & Session Management
 
-* Hierarchical structure:
+- Hierarchical structure:
 
 ```
 Event → Track → Session
 ```
 
-* Tracks belong to an event
-* Sessions belong to a track
-* Enables structured scheduling within events
+- Tracks belong to an event
+- Sessions belong to a track
+- Enables structured scheduling within events
 
 ---
 
 ### 🔹 Registration System
 
-* Users can register for events
-* Track participants per event
-* Prevent duplicate registrations (if implemented)
+- Users can register for events
+- Track participants per event
+- Prevent duplicate registrations (if implemented)
 
 ---
 
 ### 🔹 API Design
 
-* Standardized response format:
+- Standardized response format:
 
 ```json
 {
@@ -68,7 +67,7 @@ Event → Track → Session
 }
 ```
 
-* Pagination response:
+- Pagination response:
 
 ```json
 {
@@ -89,25 +88,20 @@ Event → Track → Session
 
 ### Entity Relationship
 
-* **User**
+- **User**
+  - has role: `superadmin | admin | user`
 
-  * has role: `superadmin | admin | user`
+- **Event**
+  - created by user (admin/superadmin)
 
-* **Event**
+- **Track**
+  - belongs to Event
 
-  * created by user (admin/superadmin)
+- **Session**
+  - belongs to Track
 
-* **Track**
-
-  * belongs to Event
-
-* **Session**
-
-  * belongs to Track
-
-* **Registration**
-
-  * links User ↔ Event
+- **Registration**
+  - links User ↔ Event
 
 ---
 
@@ -178,14 +172,17 @@ password: P@ssw0rd
 
 ### 📅 Events
 
-| Method | Endpoint            | Access           |
-| ------ | ------------------- | ---------------- |
-| GET    | `/api/events/`      | All users        |
-| POST   | `/api/events/`      | Admin/Superadmin |
-| GET    | `/api/events/{id}/` | All users        |
-| PUT    | `/api/events/{id}/` | Admin/Superadmin |
-| PATCH  | `/api/events/{id}/` | Admin/Superadmin |
-| DELETE | `/api/events/{id}/` | Admin/Superadmin |
+| Method | Endpoint                            | Access           |
+| ------ | ----------------------------------- | ---------------- |
+| GET    | `/api/events/`                      | All users        |
+| POST   | `/api/events/`                      | Admin/Superadmin |
+| GET    | `/api/events/{id}/`                 | All users        |
+| PUT    | `/api/events/{id}/`                 | Admin/Superadmin |
+| PATCH  | `/api/events/{id}/`                 | Admin/Superadmin |
+| DELETE | `/api/events/{id}/`                 | Admin/Superadmin |
+| GET    | `/api/events/my-events/`            | Admin/Superadmin |
+| GET    | `/api/events/{id}/my-event-detail/` | Admin/Superadmin |
+| GET    | `/api/events/{id}/registrations/`   | Admin/Superadmin |
 
 ---
 
@@ -226,8 +223,8 @@ password: P@ssw0rd
 
 ### Services
 
-* **web** → Django API
-* **db** → PostgreSQL
+- **web** → Django API
+- **db** → PostgreSQL
 
 ### Run
 
@@ -245,7 +242,7 @@ docker compose down
 
 ## 📈 Scalability Considerations
 
-* Separation of concerns (apps: users, events, registrations)
-* PostgreSQL for relational integrity
-* Pagination for large datasets
-* Docker for environment consistency
+- Separation of concerns (apps: users, events, registrations)
+- PostgreSQL for relational integrity
+- Pagination for large datasets
+- Docker for environment consistency

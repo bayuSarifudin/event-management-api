@@ -42,5 +42,6 @@ urlpatterns = [
     path('api/auth/refresh/', TokenRefreshView.as_view()),
     path('api/auth/register/', RegisterView.as_view()),
     path('api/users/promote/', PromoteToAdminView.as_view()),
+    path('api/users/', include('users.urls')),
     path('api/', include(router.urls)),
 ]

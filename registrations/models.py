@@ -15,7 +15,7 @@ class Registration(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, related_name='registrations', on_delete=models.CASCADE)
     registered_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
