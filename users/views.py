@@ -12,6 +12,9 @@ from django.contrib.auth import get_user_model
 from events.permissions import IsSuperAdmin
 from core.responses import paginated_response
 
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import CustomTokenObtainPairSerializer
+
 # Create your views here.
 User = get_user_model()
 
@@ -62,3 +65,6 @@ class UserViewSet(ModelViewSet):
             data=serializer.data,
             message="List of users"
         )
+
+class CustomLoginView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer

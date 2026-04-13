@@ -26,7 +26,7 @@ from rest_framework.routers import DefaultRouter
 
 from events.views import EventViewSet, TrackViewSet, SessionViewSet
 from registrations.views import RegistrationViewSet
-from users.views import PromoteToAdminView, RegisterView
+from users.views import CustomLoginView, PromoteToAdminView, RegisterView
 
 router = DefaultRouter()
 router.register('events', EventViewSet)
@@ -38,7 +38,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema')),
-    path('api/auth/login/', TokenObtainPairView.as_view()),
+    # path('api/auth/login/', TokenObtainPairView.as_view()),
+    path('api/auth/login/', CustomLoginView.as_view(), name='token_obtain_pair'),
     path('api/auth/refresh/', TokenRefreshView.as_view()),
     path('api/auth/register/', RegisterView.as_view()),
     path('api/users/promote/', PromoteToAdminView.as_view()),
