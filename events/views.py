@@ -189,7 +189,7 @@ class EventViewSet(ModelViewSet):
 class TrackViewSet(ModelViewSet):
     queryset = Track.objects.all()
     serializer_class = TrackSerializer
-    permission_classes = [IsAdminOrSuperAdmin, IsOwnerOrReadOnly, IsAuthenticated]
+    permission_classes = [IsAdminOrSuperAdmin, IsAuthenticated]
     pagination_class = EventPagination
     filterset_fields = ['name', 'event']
     
@@ -289,7 +289,7 @@ class TrackViewSet(ModelViewSet):
 class SessionViewSet(ModelViewSet):
     queryset = Session.objects.all()
     serializer_class = SessionSerializer
-    permission_classes = [IsAdminOrSuperAdmin, IsOwnerOrReadOnly, IsAuthenticated]
+    permission_classes = [IsAdminOrSuperAdmin, IsAuthenticated]
     pagination_class = EventPagination
     filterset_fields = ['track', 'start_time']
 
