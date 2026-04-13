@@ -46,7 +46,7 @@ class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, IsSuperAdmin]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['role']
+    filterset_fields = ['role', 'username']
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
