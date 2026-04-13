@@ -199,7 +199,7 @@ password: P@ssw0rd
 
 ---
 
-## 📚 API Endpoints
+## 📚 [API Endpoints](https://github.com/bayuSarifudin/event-management-api/blob/main/api-contract.md)
 
 ### 🔐 Authentication
 
