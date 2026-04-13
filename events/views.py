@@ -26,7 +26,7 @@ class EventViewSet(ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
     permission_classes = [IsAuthenticated, IsAdminOrSuperAdmin, IsOwnerOrReadOnly]
-    filterset_fields = ['name', 'venue', 'start_date']
+    filterset_fields = ['name', 'venue', 'start_date', 'created_by_id']
     pagination_class = EventPagination
     
     def get_queryset(self):
