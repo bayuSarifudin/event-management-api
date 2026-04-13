@@ -84,7 +84,7 @@ Event → Track → Session
 
 ---
 
-## 🧠 System Design
+## 🧠 System Design --> [See ERD](https://dbdiagram.io/d/event-management-system-668e203c9939893dae845776)
 
 ### Entity Relationship
 
