@@ -84,7 +84,7 @@ Event → Track → Session
 
 ---
 
-## 🧠 System Design
+## 🧠 System Design --> [See ERD](https://dbdiagram.io/d/event-management-system-668e203c9939893dae845776)
 
 ### Entity Relationship
 
@@ -199,7 +199,7 @@ password: P@ssw0rd
 
 ---
 
-## 📚 API Endpoints
+## 📚 [API Endpoints](https://github.com/bayuSarifudin/event-management-api/blob/main/api-contract.md)
 
 ### 🔐 Authentication
 
